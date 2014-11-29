@@ -40,7 +40,7 @@ sub register {
         my $geocoder = Geo::Coder::Google->new(
                 apiver      => 3,
                 ( $rh_args->{country_code} || $rh_conf->{country_code} ?
-                    (gl          => $rh_args->{country_code} || $rh_conf->{country_code}) : ()),
+                    (gl     => $rh_args->{country_code} || $rh_conf->{country_code}) : ()),
                 language    => $rh_args->{language_code} || $rh_conf->{language_code}  || 'en',
                 );
 
@@ -53,6 +53,28 @@ sub register {
                 lat     => $rh_response->{geometry}{location}{lat},
                 lng     => $rh_response->{geometry}{location}{lng},
             };
+    });
+
+    $app->helper(reverse_geocode=> sub {
+        my ($self,$rh_args) =@_;
+
+        return { } unless($rh_args->{latlng});
+
+        my $geocoder = Geo::Coder::Google->new(
+                apiver      => 3,
+                ( $rh_args->{country_code} || $rh_conf->{country_code} ?
+                    (gl     => $rh_args->{country_code} || $rh_conf->{country_code}) : ()),
+                language    => $rh_args->{language_code} || $rh_conf->{language_code}  || 'en',
+        );
+        my $rh_response = $geocoder->reverse_geocode(latlng => $rh_args->{latlng});
+
+        return $rh_response if($rh_conf->{raw_response} || $rh_conf->{raw_response});
+
+        return {
+                address => $rh_response->{formatted_address},
+                lat     => $rh_response->{geometry}{location}{lat},
+                lng     => $rh_response->{geometry}{location}{lng},
+            }
     });
 }
 
