@@ -1,17 +1,5 @@
 Mojolicious-Plugin-GeoCoder
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
-
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
-
-
 INSTALLATION
 
 To install this module, run the following commands:
@@ -22,6 +10,37 @@ To install this module, run the following commands:
 	make install
 
 SUPPORT AND DOCUMENTATION
+    #Mojolicious lite
+
+    plugin 'GeoCoder' => { language_code=> 'es' }; #by default language code 'en'
+
+    #or you could do
+
+    my $rh_conf = {
+            language_code   => 'en',
+            encoding        => 'latin1' #by default its utf-8
+        };
+
+    plugin 'GeoCoder' => $rh_conf;
+
+    #in controller
+    my $rh_location = $self->geocode({location=> 'London'});
+
+    my $rh_location = $self->reverse_geocode({latlng=> '18.234686,73.446444'});
+
+    #to get raw response from geocoder
+    my $rh_location = $self->geocode({location=> 'London',raw_response => 1 });
+
+    #To change language to fr and country to canada only for one request
+    #Now following will return London from Canada instead of real London from UK
+    my $rh_location = $self->geocode({location=> 'London',language_code=>'fr',country_code => 'ca' });
+
+    #default response 
+        {
+            'lat'       => '51.5073509',
+            'address'   => 'London, UK',
+            'lng'       => '-0.1277583'
+        };
 
 After installing, you can find documentation for this module with the
 perldoc command.
@@ -31,16 +50,7 @@ perldoc command.
 You can also look for information at:
 
     RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Mojolicious-Plugin-GeoCoder
-
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Mojolicious-Plugin-GeoCoder
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Mojolicious-Plugin-GeoCoder
-
-    Search CPAN
-        http://search.cpan.org/dist/Mojolicious-Plugin-GeoCoder/
+		https://github.com/raigad/mojolicious-plugin-geocoder/issues
 
 
 LICENSE AND COPYRIGHT

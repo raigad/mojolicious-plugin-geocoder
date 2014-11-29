@@ -18,8 +18,21 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM => {
-        #'ABC'              => 1.6,
-        #'Foo::Bar::Module' => 5.0401,
+        'Geo::Coder::Google'  => 0
+    },
+    META_MERGE  => {
+        "meta-spec" => { version => 2 },
+        resources   => {
+                    "bugtracker" => {
+                               "web" => "https://github.com/raigad/mojolicious-plugin-geocoder/issues"
+                        },
+                    "homepage" => "http://search.cpan.org/~raigad/mojolicious-plugin-geocoder/",
+                    repository  => {
+                                type => 'git',
+                                url => 'git://github.com/raigad/mojolicious-plugin-geocoder.git',
+                                web => 'https://github.com/raigad/mojolicious-plugin-geocoder',
+                    },
+    },
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Mojolicious-Plugin-GeoCoder-*' },
