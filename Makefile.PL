@@ -18,7 +18,8 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM => {
-        'Geo::Coder::Google'  => 0
+        'Mojolicious'           => 0
+        'Geo::Coder::Google'    => 0
     },
     META_MERGE  => {
         "meta-spec" => { version => 2 },
