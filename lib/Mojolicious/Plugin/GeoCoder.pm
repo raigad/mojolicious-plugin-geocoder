@@ -5,7 +5,7 @@ use warnings FATAL => 'all';
 use Mojo::Base 'Mojolicious::Plugin';
 use Geo::Coder::Google;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub register {
     my ($self,$app,$rh_conf) = @_;
@@ -60,7 +60,7 @@ Mojolicious::Plugin::GeoCoder - Plugin for geocoding and reverse geocoding featu
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
