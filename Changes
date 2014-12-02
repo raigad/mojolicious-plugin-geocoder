@@ -1,6 +1,8 @@
 Revision history for Mojolicious-Plugin-GeoCoder
+0.03 	2 Dec 2014
+	Corrected typo mistake in Makefile.PL
 0.02	30 Nov 2014 
-		Added Mojolicious as dependency
+	Added Mojolicious as dependency
 0.01    Date/time
         First version, released on an unsuspecting world.
 
