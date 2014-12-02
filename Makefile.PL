@@ -18,7 +18,7 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM => {
-        'Mojolicious'           => 0
+        'Mojolicious'           => 0,
         'Geo::Coder::Google'    => 0
     },
     META_MERGE  => {
